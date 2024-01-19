@@ -1,6 +1,6 @@
 #!/bin/bash
 # Copyfuck © 2010 q
-# Edited by NewEraCracker
+# Edited by Swatticus Development
 #
 # This script installs, updates and runs LOIC on Linux.
 #
@@ -15,7 +15,7 @@
 # Usage: bash ./loic-net4.0.sh <install|update|run>
 #
 
-GIT_REPO=https://github.com/NewEraCracker/LOIC.git
+GIT_REPO=https://github.com/Swatticus Development/LOIC.git
 GIT_BRANCH=master
 
 DEB_MONO_PKG="monodevelop liblog4net-cil-dev mono-devel mono-runtime-common mono-runtime libmono-system-windows-forms4.0-cil"

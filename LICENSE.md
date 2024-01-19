@@ -1,4 +1,4 @@
-## Ourmine's Low Orbit Ion Cannon
+## Swatticus Development Low Orbit Ion Cannon
 
 MIT License
 

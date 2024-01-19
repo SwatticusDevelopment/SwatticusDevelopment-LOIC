@@ -698,7 +698,7 @@ namespace LOIC
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(165, 14);
             this.label24.TabIndex = 14;
-            this.label24.Text = "github.com/NewEraCracker/LOIC";
+            this.label24.Text = "github.com/Swatticus Development/LOIC";
             this.TTip.SetToolTip(this.label24, "Go to official page");
             this.label24.Click += new System.EventHandler(this.label24_Click);
             //
