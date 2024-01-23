@@ -1,22 +1,3 @@
-#!/bin/bash
-# Copyfuck © 2010 q
-# Edited by Swatticus Development
-#
-# This script installs, updates and runs LOIC on Linux.
-#
-# Supported distributions:
-#    * Ubuntu
-#    * Debian
-#    * Fedora
-#
-# Before using you must install monodevelop from:
-# https://www.monodevelop.com/download/#fndtn-download-lin
-#
-# Usage: bash ./loic-net4.0.sh <install|update|run>
-#
-
-GIT_REPO=https://github.com/Swatticus Development/LOIC.git
-GIT_BRANCH=master
 
 DEB_MONO_PKG="monodevelop liblog4net-cil-dev mono-devel mono-runtime-common mono-runtime libmono-system-windows-forms4.0-cil"
 FED_MONO_PKG="mono-basic mono-devel monodevelop mono-tools"
