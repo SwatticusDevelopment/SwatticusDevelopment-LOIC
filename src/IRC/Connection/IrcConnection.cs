@@ -1,30 +1,4 @@
-/*
- * $Id: IrcConnection.cs 211 2007-02-01 22:08:32Z meebey $
- * $URL: svn://svn.qnetp.net/smartirc/SmartIrc4net/tags/0.4.0/src/IrcConnection/IrcConnection.cs $
- * $Rev: 211 $
- * $Author: meebey $
- * $Date: 2007-02-01 23:08:32 +0100 (Thu, 01 Feb 2007) $
- *
- * SmartIrc4net - the IRC library for .NET/C# <http://smartirc4net.sf.net>
- *
- * Copyright (c) 2003-2005 Mirco Bauer <meebey@meebey.net> <http://www.meebey.net>
- *
- * Full LGPL License: <http://www.gnu.org/licenses/lgpl.txt>
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
+
 
 using System;
 using System.IO;
@@ -37,10 +11,10 @@ using System.Net.Sockets;
 
 namespace Meebey.SmartIrc4net
 {
-    /// <summary>
-    ///
-    /// </summary>
-    /// <threadsafety static="true" instance="true" />
+     <summary>
+    
+     </summary>
+     <threadsafety static="true" instance="true" />
     public class IrcConnection
     {
         private string           _VersionNumber;
@@ -73,42 +47,42 @@ namespace Meebey.SmartIrc4net
         private DateTime         _LastPongReceived;
         private TimeSpan         _Lag;
 
-        /// <event cref="OnReadLine">
-        /// Raised when a \r\n terminated line is read from the socket
-        /// </event>
+         <event cref="OnReadLine">
+         Raised when a \r\n terminated line is read from the socket
+         </event>
         public event ReadLineEventHandler   OnReadLine;
-        /// <event cref="OnWriteLine">
-        /// Raised when a \r\n terminated line is written to the socket
-        /// </event>
+         <event cref="OnWriteLine">
+         Raised when a \r\n terminated line is written to the socket
+         </event>
         public event WriteLineEventHandler  OnWriteLine;
-        /// <event cref="OnConnect">
-        /// Raised before the connect attempt
-        /// </event>
+         <event cref="OnConnect">
+         Raised before the connect attempt
+         </event>
         public event EventHandler           OnConnecting;
-        /// <event cref="OnConnect">
-        /// Raised on successful connect
-        /// </event>
+         <event cref="OnConnect">
+         Raised on successful connect
+         </event>
         public event EventHandler           OnConnected;
-        /// <event cref="OnConnect">
-        /// Raised before the connection is closed
-        /// </event>
+         <event cref="OnConnect">
+         Raised before the connection is closed
+         </event>
         public event EventHandler           OnDisconnecting;
-        /// <event cref="OnConnect">
-        /// Raised when the connection is closed
-        /// </event>
+         <event cref="OnConnect">
+         Raised when the connection is closed
+         </event>
         public event EventHandler           OnDisconnected;
-        /// <event cref="OnConnectionError">
-        /// Raised when the connection got into an error state
-        /// </event>
+         <event cref="OnConnectionError">
+         Raised when the connection got into an error state
+         </event>
         public event EventHandler           OnConnectionError;
-        /// <event cref="AutoConnectErrorEventHandler">
-        /// Raised when the connection got into an error state during auto connect loop
-        /// </event>
+         <event cref="AutoConnectErrorEventHandler">
+         Raised when the connection got into an error state during auto connect loop
+         </event>
         public event AutoConnectErrorEventHandler   OnAutoConnectError;
 
-        /// <summary>
-        /// When a connection error is detected this property will return true
-        /// </summary>
+         <summary>
+         When a connection error is detected this property will return true
+         </summary>
         protected bool IsConnectionError {
             get {
                 lock (this) {
@@ -122,42 +96,42 @@ namespace Meebey.SmartIrc4net
             }
         }
 
-        /// <summary>
-        /// Gets the current address of the connection
-        /// </summary>
+         <summary>
+         Gets the current address of the connection
+         </summary>
         public string Address {
             get {
                 return _AddressList[_CurrentAddress];
             }
         }
 
-        /// <summary>
-        /// Gets the address list of the connection
-        /// </summary>
+         <summary>
+         Gets the address list of the connection
+         </summary>
         public string[] AddressList {
             get {
                 return _AddressList;
             }
         }
 
-        /// <summary>
-        /// Gets the used port of the connection
-        /// </summary>
+         <summary>
+         Gets the used port of the connection
+         </summary>
         public int Port {
             get {
                 return _Port;
             }
         }
 
-        /// <summary>
-        /// By default nothing is done when the library looses the connection
-        /// to the server.
-        /// Default: false
-        /// </summary>
-        /// <value>
-        /// true, if the library should reconnect on lost connections
-        /// false, if the library should not take care of it
-        /// </value>
+         <summary>
+         By default nothing is done when the library looses the connection
+         to the server.
+         Default: false
+         </summary>
+         <value>
+         true, if the library should reconnect on lost connections
+         false, if the library should not take care of it
+         </value>
         public bool AutoReconnect {
             get {
                 return _AutoReconnect;
@@ -174,14 +148,14 @@ namespace Meebey.SmartIrc4net
             }
         }
 
-        /// <summary>
-        /// If the library should retry to connect when the connection fails.
-        /// Default: false
-        /// </summary>
-        /// <value>
-        /// true, if the library should retry to connect
-        /// false, if the library should not retry
-        /// </value>
+         <summary>
+         If the library should retry to connect when the connection fails.
+         Default: false
+         </summary>
+         <value>
+         true, if the library should retry to connect
+         false, if the library should not retry
+         </value>
         public bool AutoRetry {
             get {
                 return _AutoRetry;
@@ -198,10 +172,10 @@ namespace Meebey.SmartIrc4net
             }
         }
 
-        /// <summary>
-        /// Delay between retry attempts in Connect() in seconds.
-        /// Default: 30
-        /// </summary>
+         <summary>
+         Delay between retry attempts in Connect() in seconds.
+         Default: 30
+         </summary>
         public int AutoRetryDelay {
             get {
                 return _AutoRetryDelay;
@@ -211,11 +185,11 @@ namespace Meebey.SmartIrc4net
             }
         }
 
-        /// <summary>
-        /// To prevent flooding the IRC server, it's required to delay each
-        /// message, given in milliseconds.
-        /// Default: 200
-        /// </summary>
+         <summary>
+         To prevent flooding the IRC server, it's required to delay each
+         message, given in milliseconds.
+         Default: 200
+         </summary>
         public int SendDelay {
             get {
                 return _SendDelay;
@@ -225,46 +199,46 @@ namespace Meebey.SmartIrc4net
             }
         }
 
-        /// <summary>
-        /// On successful registration on the IRC network, this is set to true.
-        /// </summary>
+         <summary>
+         On successful registration on the IRC network, this is set to true.
+         </summary>
         public bool IsRegistered {
             get {
                 return _IsRegistered;
             }
         }
 
-        /// <summary>
-        /// On successful connect to the IRC server, this is set to true.
-        /// </summary>
+         <summary>
+         On successful connect to the IRC server, this is set to true.
+         </summary>
         public bool IsConnected {
             get {
                 return _IsConnected;
             }
         }
 
-        /// <summary>
-        /// Gets the SmartIrc4net version number
-        /// </summary>
+         <summary>
+         Gets the SmartIrc4net version number
+         </summary>
         public string VersionNumber {
             get {
                 return _VersionNumber;
             }
         }
 
-        /// <summary>
-        /// Gets the full SmartIrc4net version string
-        /// </summary>
+         <summary>
+         Gets the full SmartIrc4net version string
+         </summary>
         public string VersionString {
             get {
                 return _VersionString;
             }
         }
 
-        /// <summary>
-        /// Encoding which is used for reading and writing to the socket
-        /// Default: encoding of the system
-        /// </summary>
+         <summary>
+         Encoding which is used for reading and writing to the socket
+         Default: encoding of the system
+         </summary>
         public Encoding Encoding {
             get {
                 return _Encoding;
@@ -274,10 +248,10 @@ namespace Meebey.SmartIrc4net
             }
         }
 
-        /// <summary>
-        /// Timeout in seconds for receiving data from the socket
-        /// Default: 300
-        /// </summary>
+         <summary>
+         Timeout in seconds for receiving data from the socket
+         Default: 300
+         </summary>
         public int SocketReceiveTimeout {
             get {
                 return _SocketReceiveTimeout;
@@ -287,10 +261,10 @@ namespace Meebey.SmartIrc4net
             }
         }
 
-        /// <summary>
-        /// Timeout in seconds for sending data to the socket
-        /// Default: 300
-        /// </summary>
+         <summary>
+         Timeout in seconds for sending data to the socket
+         Default: 300
+         </summary>
         public int SocketSendTimeout {
             get {
                 return _SocketSendTimeout;
@@ -300,10 +274,10 @@ namespace Meebey.SmartIrc4net
             }
         }
 
-        /// <summary>
-        /// Interval in seconds to run the idle worker
-        /// Default: 60
-        /// </summary>
+         <summary>
+         Interval in seconds to run the idle worker
+         Default: 60
+         </summary>
         public int IdleWorkerInterval {
             get {
                 return _IdleWorkerInterval;
@@ -313,10 +287,10 @@ namespace Meebey.SmartIrc4net
             }
         }
 
-        /// <summary>
-        /// Interval in seconds to send a PING
-        /// Default: 60
-        /// </summary>
+         <summary>
+         Interval in seconds to send a PING
+         Default: 60
+         </summary>
         public int PingInterval {
             get {
                 return _PingInterval;
@@ -326,10 +300,10 @@ namespace Meebey.SmartIrc4net
             }
         }
 
-        /// <summary>
-        /// Timeout in seconds for server response to a PING
-        /// Default: 150
-        /// </summary>
+         <summary>
+         Timeout in seconds for server response to a PING
+         Default: 150
+         </summary>
         public int PingTimeout {
             get {
                 return _PingTimeout;
@@ -339,18 +313,18 @@ namespace Meebey.SmartIrc4net
             }
         }
 
-        /// <summary>
-        /// Latency between client and the server
-        /// </summary>
+         <summary>
+         Latency between client and the server
+         </summary>
         public TimeSpan Lag {
             get {
                 return _Lag;
             }
         }
 
-        /// <summary>
-        /// Initializes the message queues, read and write thread
-        /// </summary>
+         <summary>
+         Initializes the message queues, read and write thread
+         </summary>
         public IrcConnection()
         {
 #if LOG4NET
@@ -387,15 +361,15 @@ namespace Meebey.SmartIrc4net
         }
 #endif
 
-        /// <overloads>this method has 2 overloads</overloads>
-        /// <summary>
-        /// Connects to the specified server and port, when the connection fails
-        /// the next server in the list will be used.
-        /// </summary>
-        /// <param name="addresslist">List of servers to connect to</param>
-        /// <param name="port">Portnumber to connect to</param>
-        /// <exception cref="CouldNotConnectException">The connection failed</exception>
-        /// <exception cref="AlreadyConnectedException">If there is already an active connection</exception>
+         <overloads>this method has 2 overloads</overloads>
+         <summary>
+         Connects to the specified server and port, when the connection fails
+         the next server in the list will be used.
+         </summary>
+         <param name="addresslist">List of servers to connect to</param>
+         <param name="port">Portnumber to connect to</param>
+         <exception cref="CouldNotConnectException">The connection failed</exception>
+         <exception cref="AlreadyConnectedException">If there is already an active connection</exception>
         public void Connect(string[] addresslist, int port)
         {
             if (_IsConnected) {
@@ -492,28 +466,28 @@ namespace Meebey.SmartIrc4net
             }
         }
 
-        /// <summary>
-        /// Connects to the specified server and port.
-        /// </summary>
-        /// <param name="address">Server address to connect to</param>
-        /// <param name="port">Port number to connect to</param>
+         <summary>
+         Connects to the specified server and port.
+         </summary>
+         <param name="address">Server address to connect to</param>
+         <param name="port">Port number to connect to</param>
         public void Connect(string address, int port)
         {
             Connect(new string[] {address}, port);
         }
 
-        /// <summary>
-        /// Reconnects to the server
-        /// </summary>
-        /// <exception cref="NotConnectedException">
-        /// If there was no active connection
-        /// </exception>
-        /// <exception cref="CouldNotConnectException">
-        /// The connection failed
-        /// </exception>
-        /// <exception cref="AlreadyConnectedException">
-        /// If there is already an active connection
-        /// </exception>
+         <summary>
+         Reconnects to the server
+         </summary>
+         <exception cref="NotConnectedException">
+         If there was no active connection
+         </exception>
+         <exception cref="CouldNotConnectException">
+         The connection failed
+         </exception>
+         <exception cref="AlreadyConnectedException">
+         If there is already an active connection
+         </exception>
         public void Reconnect()
         {
 #if LOG4NET
@@ -523,12 +497,12 @@ namespace Meebey.SmartIrc4net
             Connect(_AddressList, _Port);
         }
 
-        /// <summary>
-        /// Disconnects from the server
-        /// </summary>
-        /// <exception cref="NotConnectedException">
-        /// If there was no active connection
-        /// </exception>
+         <summary>
+         Disconnects from the server
+         </summary>
+         <exception cref="NotConnectedException">
+         If there was no active connection
+         </exception>
         public void Disconnect()
         {
             if (!IsConnected) {
@@ -557,10 +531,10 @@ namespace Meebey.SmartIrc4net
 #endif
         }
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="blocking"></param>
+         <summary>
+        
+         </summary>
+         <param name="blocking"></param>
         public void Listen(bool blocking)
         {
             if (blocking) {
@@ -574,36 +548,36 @@ namespace Meebey.SmartIrc4net
             }
         }
 
-        /// <summary>
-        ///
-        /// </summary>
+         <summary>
+        
+         </summary>
         public void Listen()
         {
             Listen(true);
         }
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="blocking"></param>
+         <summary>
+        
+         </summary>
+         <param name="blocking"></param>
         public void ListenOnce(bool blocking)
         {
             ReadLine(blocking);
         }
 
-        /// <summary>
-        ///
-        /// </summary>
+         <summary>
+        
+         </summary>
         public void ListenOnce()
         {
             ListenOnce(true);
         }
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="blocking"></param>
-        /// <returns></returns>
+         <summary>
+        
+         </summary>
+         <param name="blocking"></param>
+         <returns></returns>
         public string ReadLine(bool blocking)
         {
             string data = "";
@@ -638,11 +612,11 @@ namespace Meebey.SmartIrc4net
             return data;
         }
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="data"></param>
-        /// <param name="priority"></param>
+         <summary>
+        
+         </summary>
+         <param name="data"></param>
+         <param name="priority"></param>
         public void WriteLine(string data, Priority priority)
         {
             if (priority == Priority.Critical) {
@@ -656,10 +630,10 @@ namespace Meebey.SmartIrc4net
             }
         }
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="data"></param>
+         <summary>
+        
+         </summary>
+         <param name="data"></param>
         public void WriteLine(string data)
         {
             WriteLine(data, Priority.Medium);
@@ -769,9 +743,9 @@ namespace Meebey.SmartIrc4net
             }
         }
 
-        /// <summary>
-        ///
-        /// </summary>
+         <summary>
+        
+         </summary>
         private class ReadThread
         {
             private IrcConnection  _Connection;
@@ -784,18 +758,18 @@ namespace Meebey.SmartIrc4net
                 }
             }
 
-            /// <summary>
-            ///
-            /// </summary>
-            /// <param name="connection"></param>
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
             public ReadThread(IrcConnection connection)
             {
                 _Connection = connection;
             }
 
-            /// <summary>
-            ///
-            /// </summary>
+             <summary>
+            
+             </summary>
             public void Start()
             {
                 _Thread = new Thread(new ThreadStart(_Worker));
@@ -804,9 +778,9 @@ namespace Meebey.SmartIrc4net
                 _Thread.Start();
             }
 
-            /// <summary>
-            ///
-            /// </summary>
+             <summary>
+            
+             </summary>
             public void Stop()
             {
                 _Thread.Abort();
@@ -852,9 +826,9 @@ namespace Meebey.SmartIrc4net
             }
         }
 
-        /// <summary>
-        ///
-        /// </summary>
+         <summary>
+        
+         </summary>
         private class WriteThread
         {
             private IrcConnection  _Connection;
@@ -872,18 +846,18 @@ namespace Meebey.SmartIrc4net
             private int            _BelowMediumThresholdCount = 1;
             private int            _BurstCount;
 
-            /// <summary>
-            ///
-            /// </summary>
-            /// <param name="connection"></param>
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
             public WriteThread(IrcConnection connection)
             {
                 _Connection = connection;
             }
 
-            /// <summary>
-            ///
-            /// </summary>
+             <summary>
+            
+             </summary>
             public void Start()
             {
                 _Thread = new Thread(new ThreadStart(_Worker));
@@ -892,9 +866,9 @@ namespace Meebey.SmartIrc4net
                 _Thread.Start();
             }
 
-            /// <summary>
-            ///
-            /// </summary>
+             <summary>
+            
+             </summary>
             public void Stop()
             {
                 _Thread.Abort();
@@ -1080,26 +1054,26 @@ namespace Meebey.SmartIrc4net
             #endregion
         }
 
-        /// <summary>
-        ///
-        /// </summary>
+         <summary>
+        
+         </summary>
         private class IdleWorkerThread
         {
             private IrcConnection   _Connection;
             private Thread          _Thread;
 
-            /// <summary>
-            ///
-            /// </summary>
-            /// <param name="connection"></param>
+             <summary>
+            
+             </summary>
+             <param name="connection"></param>
             public IdleWorkerThread(IrcConnection connection)
             {
                 _Connection = connection;
             }
 
-            /// <summary>
-            ///
-            /// </summary>
+             <summary>
+            
+             </summary>
             public void Start()
             {
                 DateTime now = DateTime.UtcNow;
@@ -1112,9 +1086,9 @@ namespace Meebey.SmartIrc4net
                 _Thread.Start();
             }
 
-            /// <summary>
-            ///
-            /// </summary>
+             <summary>
+            
+             </summary>
             public void Stop()
             {
                 _Thread.Abort();

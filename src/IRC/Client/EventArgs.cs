@@ -1,39 +1,10 @@
-/*
- * $Id: EventArgs.cs 203 2005-06-10 01:42:42Z meebey $
- * $URL: svn://svn.qnetp.net/smartirc/SmartIrc4net/tags/0.4.0/src/IrcClient/EventArgs.cs $
- * $Rev: 203 $
- * $Author: meebey $
- * $Date: 2005-06-10 03:42:42 +0200 (Fri, 10 Jun 2005) $
- *
- * SmartIrc4net - the IRC library for .NET/C# <http://smartirc4net.sf.net>
- *
- * Copyright (c) 2003-2005 Mirco Bauer <meebey@meebey.net> <http://www.meebey.net>
- *
- * Full LGPL License: <http://www.gnu.org/licenses/lgpl.txt>
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
+
 
 using System;
 using System.Collections.Specialized;
 
 namespace Meebey.SmartIrc4net
 {
-    /// <summary>
-    ///
-    /// </summary>
     public class ActionEventArgs : CtcpEventArgs
     {
         private string _ActionMessage;
@@ -50,9 +21,6 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class CtcpEventArgs : IrcEventArgs
     {
         private string _CtcpCommand;
@@ -77,9 +45,6 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class ErrorEventArgs : IrcEventArgs
     {
         private string _ErrorMessage;
@@ -96,9 +61,6 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class MotdEventArgs : IrcEventArgs
     {
         private string _MotdMessage;
@@ -115,9 +77,6 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class PingEventArgs : IrcEventArgs
     {
         private string _PingData;
@@ -134,9 +93,6 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class PongEventArgs : IrcEventArgs
     {
         private TimeSpan _Lag;
@@ -153,9 +109,6 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class KickEventArgs : IrcEventArgs
     {
         private string _Channel;
@@ -196,9 +149,6 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class JoinEventArgs : IrcEventArgs
     {
         private string _Channel;
@@ -223,9 +173,6 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class NamesEventArgs : IrcEventArgs
     {
         private string   _Channel;
@@ -249,10 +196,7 @@ namespace Meebey.SmartIrc4net
             _UserList = userlist;
         }
     }
-
-    /// <summary>
-    ///
-    /// </summary>
+>
     public class InviteEventArgs : IrcEventArgs
     {
         private string   _Channel;
@@ -277,9 +221,6 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class PartEventArgs : IrcEventArgs
     {
         private string   _Channel;
@@ -311,9 +252,7 @@ namespace Meebey.SmartIrc4net
             _PartMessage = partmessage;
         }
     }
-    /// <summary>
-    ///
-    /// </summary>
+
     public class WhoEventArgs : IrcEventArgs
     {
         private string   _Channel;
@@ -410,9 +349,6 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class QuitEventArgs : IrcEventArgs
     {
         private string   _Who;
@@ -438,9 +374,6 @@ namespace Meebey.SmartIrc4net
     }
 
 
-    /// <summary>
-    ///
-    /// </summary>
     public class AwayEventArgs : IrcEventArgs
     {
         private string   _Who;
@@ -464,9 +397,7 @@ namespace Meebey.SmartIrc4net
             _AwayMessage = awaymessage;
         }
     }
-    /// <summary>
-    ///
-    /// </summary>
+
     public class NickChangeEventArgs : IrcEventArgs
     {
         private string   _OldNickname;
@@ -491,9 +422,6 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class TopicEventArgs : IrcEventArgs
     {
         private string   _Channel;
@@ -518,9 +446,7 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
+
     public class TopicChangeEventArgs : IrcEventArgs
     {
         private string   _Channel;
@@ -553,9 +479,6 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class BanEventArgs : IrcEventArgs
     {
         private string   _Channel;
@@ -588,9 +511,6 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class UnbanEventArgs : IrcEventArgs
     {
         private string   _Channel;
@@ -623,9 +543,6 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class OpEventArgs : IrcEventArgs
     {
         private string   _Channel;
@@ -658,9 +575,6 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class DeopEventArgs : IrcEventArgs
     {
         private string   _Channel;
@@ -693,9 +607,6 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class HalfopEventArgs : IrcEventArgs
     {
         private string   _Channel;
@@ -728,9 +639,6 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class DehalfopEventArgs : IrcEventArgs
     {
         private string   _Channel;
@@ -763,9 +671,6 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class VoiceEventArgs : IrcEventArgs
     {
         private string   _Channel;
@@ -798,9 +703,6 @@ namespace Meebey.SmartIrc4net
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
     public class DevoiceEventArgs : IrcEventArgs
     {
         private string   _Channel;

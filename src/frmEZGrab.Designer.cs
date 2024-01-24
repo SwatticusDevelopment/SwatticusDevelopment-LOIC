@@ -1,16 +1,10 @@
+/// SwatticusDevelopment
 namespace LOIC
 {
     partial class frmEZGrab
     {
-        /// <summary>
-        /// Erforderliche Designervariable.
-        /// </summary>
+      
         private System.ComponentModel.IContainer components = null;
-
-        /// <summary>
-        /// Verwendete Ressourcen bereinigen.
-        /// </summary>
-        /// <param name="disposing">True, wenn verwaltete Ressourcen gelöscht werden sollen; andernfalls False.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +16,6 @@ namespace LOIC
 
         #region Vom Windows Form-Designer generierter Code
 
-        /// <summary>
-        /// Erforderliche Methode für die Designerunterstützung.
-        /// Der Inhalt der Methode darf nicht mit dem Code-Editor geändert werden.
-        /// </summary>
         private void InitializeComponent()
         {
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -42,9 +32,7 @@ namespace LOIC
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
-            //
-            // btnUpdate
-            //
+
             this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(64)))), ((int)(((byte)(96)))));
             this.btnUpdate.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.Azure;
@@ -55,9 +43,7 @@ namespace LOIC
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            //
-            // groupBox1
-            //
+ 
             this.groupBox1.Controls.Add(this.txtHivemind);
             this.groupBox1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.LightBlue;
@@ -67,9 +53,7 @@ namespace LOIC
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "IRC Hivemind";
-            //
-            // txtHivemind
-            //
+
             this.txtHivemind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(48)))), ((int)(((byte)(64)))));
             this.txtHivemind.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtHivemind.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -78,9 +62,7 @@ namespace LOIC
             this.txtHivemind.Name = "txtHivemind";
             this.txtHivemind.Size = new System.Drawing.Size(380, 20);
             this.txtHivemind.TabIndex = 1;
-            //
-            // label2
-            //
+
             this.label2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 19);
             this.label2.Name = "label2";
@@ -88,9 +70,7 @@ namespace LOIC
             this.label2.TabIndex = 5;
             this.label2.Text = "Attacktime in UTC (leave empty if none):";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            //
-            // txtDate
-            //
+
             this.txtDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(48)))), ((int)(((byte)(64)))));
             this.txtDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDate.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -101,9 +81,7 @@ namespace LOIC
             this.txtDate.TabIndex = 3;
             this.txtDate.Text = "2010/05/25 18:00";
             this.txtDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            //
-            // btnShorten
-            //
+
             this.btnShorten.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(64)))), ((int)(((byte)(96)))));
             this.btnShorten.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShorten.ForeColor = System.Drawing.Color.Azure;
@@ -114,9 +92,7 @@ namespace LOIC
             this.btnShorten.Text = "Make tiny";
             this.btnShorten.UseVisualStyleBackColor = false;
             this.btnShorten.Click += new System.EventHandler(this.btnShorten_Click);
-            //
-            // groupBox2
-            //
+
             this.groupBox2.Controls.Add(this.txtOverlord);
             this.groupBox2.Controls.Add(this.btnUpdate);
             this.groupBox2.Controls.Add(this.rbbitly);
@@ -132,9 +108,7 @@ namespace LOIC
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "OverLord";
-            //
-            // txtOverlord
-            //
+
             this.txtOverlord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(48)))), ((int)(((byte)(64)))));
             this.txtOverlord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtOverlord.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -143,9 +117,7 @@ namespace LOIC
             this.txtOverlord.Name = "txtOverlord";
             this.txtOverlord.Size = new System.Drawing.Size(380, 20);
             this.txtOverlord.TabIndex = 1;
-            //
-            // rbbitly
-            //
+
             this.rbbitly.AutoSize = true;
             this.rbbitly.Location = new System.Drawing.Point(261, 82);
             this.rbbitly.Name = "rbbitly";
@@ -153,9 +125,7 @@ namespace LOIC
             this.rbbitly.TabIndex = 30;
             this.rbbitly.Text = "bit.ly";
             this.rbbitly.UseVisualStyleBackColor = true;
-            //
-            // rbisgd
-            //
+
             this.rbisgd.AutoSize = true;
             this.rbisgd.Checked = true;
             this.rbisgd.Location = new System.Drawing.Point(103, 82);
@@ -165,9 +135,7 @@ namespace LOIC
             this.rbisgd.TabStop = true;
             this.rbisgd.Text = "is.gd";
             this.rbisgd.UseVisualStyleBackColor = true;
-            //
-            // btnCancel
-            //
+
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(64)))), ((int)(((byte)(96)))));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -179,9 +147,7 @@ namespace LOIC
             this.btnCancel.Text = "GTFO";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            //
-            // frmEZGrab
-            //
+
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(24)))), ((int)(((byte)(32)))));

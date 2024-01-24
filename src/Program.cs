@@ -1,7 +1,3 @@
-/* LOIC - Low Orbit Ion Cannon
- * Released to the public domain
- * Enjoy getting v&, kids.
- */
 
 using System;
 using System.Windows.Forms;
@@ -23,14 +19,13 @@ namespace LOIC
 					hide = true;
 				}
 
-				// IRC
 				if(s.ToLowerInvariant() == "/hivemind") {
 					hive = true;
-					ircserver = cmdLine[count + 1]; //if no server entered let it crash
+					ircserver = cmdLine[count + 1]; 
 					try {ircport = cmdLine[count + 2];}
-					catch(Exception) {ircport = "6667";} //default
+					catch(Exception) {ircport = "6667";} 
 					try {ircchannel = cmdLine[count + 3];}
-					catch(Exception) {ircchannel = "#loic";} //default
+					catch(Exception) {ircchannel = "#loic";} /
 				}
 
 				count++;

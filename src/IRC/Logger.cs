@@ -1,31 +1,3 @@
-/*
- * $Id: Logger.cs 209 2006-12-22 19:11:35Z meebey $
- * $URL: svn://svn.qnetp.net/smartirc/SmartIrc4net/tags/0.4.0/src/Logger.cs $
- * $Rev: 209 $
- * $Author: meebey $
- * $Date: 2006-12-22 20:11:35 +0100 (Fri, 22 Dec 2006) $
- *
- * SmartIrc4net - the IRC library for .NET/C# <http://smartirc4net.sf.net>
- *
- * Copyright (c) 2003-2005 Mirco Bauer <meebey@meebey.net> <http://www.meebey.net>
- *
- * Full LGPL License: <http://www.gnu.org/licenses/lgpl.txt>
- *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
-
 using System.IO;
 using System.Collections;
 
@@ -74,14 +46,6 @@ namespace Meebey.SmartIrc4net
 
             _Init = true;
 
-            /*
-            FileInfo fi = new FileInfo("SmartIrc4net_log.config");
-            if (fi.Exists) {
-                    log4net.Config.DOMConfigurator.ConfigureAndWatch(fi);
-            } else {
-                log4net.Config.BasicConfigurator.Configure();
-            }
-            */
 
             _LoggerList[LogCategory.Main]           = log4net.LogManager.GetLogger("MAIN");
             _LoggerList[LogCategory.Socket]         = log4net.LogManager.GetLogger("SOCKET");
